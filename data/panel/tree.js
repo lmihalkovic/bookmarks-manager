@@ -215,9 +215,16 @@ tree.jstree({
         '_disabled': () => !node.data.url
       },
       'Delete Bookmark': {
-        'label': 'Delete Bookmark',
+        'label': 'Delete',
         'action': () => document.querySelector('#toolbar [data-cmd="delete"]').click(),
         '_disabled': () => node.data.drag === false
+      },
+      'Add bookmark': {
+        'label': 'Add Bookmark',
+        'action': () => {
+          document.querySelector('[data-cmd=create-bookmark]').click();
+        },
+        '_disabled': () => node.data.url
       },
       'Validate Bookmark': {
         'separator_before': true,

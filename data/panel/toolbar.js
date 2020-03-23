@@ -59,8 +59,10 @@ document.addEventListener('click', e => {
       if (cmd === 'create-folder') {
         return callback(null, 'new directory');
       }
-      else if (cmd === 'create-bookmark') {
-        return callback('http://example.com', 'new bookmark');
+      else if (cmd === 'create-bookmark') {        
+        let commonPage = browser.extension.getBackgroundPage();
+        let tab = commonPage.currentTab;
+        return callback(tab.address, tab.title);
       }
       else {
         chrome.tabs.query({
@@ -136,6 +138,9 @@ document.addEventListener('click', e => {
         }
       }
     });
+  }
+  else if (cmd === 'toggle-bookmark') {
+    document.querySelector('[data-cmd=create-bookmark]').click();
   }
 });
 // keyboard shortcut

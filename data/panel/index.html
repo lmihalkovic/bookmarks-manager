@@ -67,7 +67,7 @@
         <ul>
           <li data-cmd="update-title" title="Ctrl + Shift + U">Update bookmark's title</li>
           <li data-cmd="open-options" title="Ctrl + Shift + O" class="separator">Open options page</li>
-          <li data-cmd="reset-root" title="Ctrl + Shift + R">Reset root</li>
+          <li data-cmd="reset-root" title="Ctrl + Shift + R">Reload All</li>
         </ul>
       </div>
       <div class="menu-button">
@@ -78,6 +78,9 @@
           <li data-cmd="create-folder" title="Ctrl + Shift + D">Create new Directory</li>
           <li data-cmd="delete" title="Ctrl + Shift + Delete" class="separator" style="display: none;">Delete this bookmark</li>
         </ul>
+      </div>
+      <div class="button">
+        <input type="button" data-cmd="toggle-bookmark" value="Add" >
       </div>
       <span></span>
       <input type="button" value="Bookmark Manager" data-cmd="bookmark-manager">
@@ -92,19 +95,25 @@
           <col width="50">
         </colgroup>
         <tbody>
-          <tr title="Ctrl + Shift + E">
+          <tr id="prop_name" title="Ctrl + Shift + E">
             <td>Title</td>
             <td><input dir="auto" type="text" form="title" disabled="true"></td>
             <td><input data-cmd="change" type="submit" value="&#xe800;" disabled="true" form="title"></td>
           </tr>
-          <tr>
+          <tr id="prop_url">
             <form>
               <td>Address</td>
               <td><input type="text" form="url" disabled="true"></td>
               <td><input data-cmd="change" type="submit" value="&#xe800;" disabled="true" form="url"></td>
             </form>
           </tr>
-          <tr>
+<!--
+  <tr id="prop_tags">
+    <td>Tags</td>
+    <td colspan="2"><span>TAGS</span></td>
+  </tr>
+-->          
+          <tr id="prop_date">
             <td>Date</td>
             <td colspan="2"><span></span></td>
           </tr>

@@ -10,6 +10,12 @@
 
 'use strict';
 
+var currentTab = {
+  id: null,
+  title: null,
+  address: null
+};
+
 var notify = message => chrome.notifications.create({
   iconUrl: 'data/icons/48.png',
   title: chrome.runtime.getManifest().name,
@@ -103,6 +109,13 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 });
 
 function update() {
+  chrome.tabs.query({active: true, currentWindow: true}, tabs => {
+    currentTab.id = tabs[0].id;
+    currentTab.title = tabs[0].title;
+    currentTab.address = tabs[0].url;
+console.log(">>>>" + JSON.stringify(currentTab));    
+  });
+
   chrome.tabs.query({}, tabs => {
     tabs.forEach(tab => {
       search(tab.url, nodes => {

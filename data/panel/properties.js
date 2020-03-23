@@ -67,7 +67,7 @@ window.addEventListener('properties:select-link', () => {
 tree.on('select_node.jstree', (e, data) => {
   properties.dataset.id = data.node.id;
 
-  const title = properties.querySelector('tr:nth-child(1) input');
+  const title = properties.querySelector('#prop_name input');
   title.dataset.value = title.value =
     tree.string.uscape(data.node.text);
   title.dispatchEvent(new Event('keyup', {
@@ -75,7 +75,7 @@ tree.on('select_node.jstree', (e, data) => {
   }));
 
   title.disabled = data.node.id.startsWith('feed-') || data.node.data.drag === false;
-  const url = properties.querySelector('tr:nth-child(2) input');
+  const url = properties.querySelector('#prop_url input');
   url.disabled = data.node.data.drag === false || data.node.data.url === '';
   url.dataset.value = url.value = data.node.data.url;
   url.dispatchEvent(new Event('keyup', {
@@ -83,7 +83,8 @@ tree.on('select_node.jstree', (e, data) => {
   }));
 
   const d = new Date(data.node.data.dateAdded);
-  properties.querySelector('tr:nth-child(3) span').textContent = d.toDateString() + ' ' + d.toLocaleTimeString();
+  // properties.querySelector('tr:nth-child(3) span').textContent = d.toDateString() + ' ' + d.toLocaleTimeString();
+  properties.querySelector('#prop_date span').textContent = d.toDateString() + ' ' + d.toLocaleTimeString();
 
   // disable on multiple select
   // properties.dataset.enable = data.selected.length === 1;
